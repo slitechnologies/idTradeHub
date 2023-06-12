@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+
+{% include 'includes/alerts.html' %}
+<div class="container">
+	<div class="row">
+		{% include 'includes/dashboard_sidebar.html' %}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">Logged in as:</strong>
+			<span>{{ user.full_name }}</span>
+		</header>
+		<div class="card-body">
+			<div class="row">
+				<!-- Left side -->
+				<div class="col-md-6" style="text-align:center">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Total Orders</h5>
+							<h4>{{ orders_count }}</h4>
+							{% if orders_count > 0 %}
+							<a href="{% url 'my_orders' %}">View Orders</a>
+							{% else %}
+							<a href="{% url 'store' %}">Buy Now</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+         <!-- right side -->
+				<div class="col-md-6" style="text-align:center">
+					<div class="card">
+						<div class="card-body">
+							<img src="{{ userprofile.profile_picture.url }}" alt="User Profile Picture" class="" width="50" height="50" style="border-radius:50%;">
+							<p class="mb-0">{{ user.email }}</p>
+							<p>{{ user.phone_number }}</p>
+						</div>
+					</div>
+				</div>
+			</div> <!-- row end	 -->
+		</div> <!-- card-body -->
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+{% endblock %}
